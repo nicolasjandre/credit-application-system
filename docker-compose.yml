@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+
+  db:
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    volumes:
+      - credit_application_system_db:/var/lib/postgresql/data
+
+volumes:
+  credit_application_system_db:
