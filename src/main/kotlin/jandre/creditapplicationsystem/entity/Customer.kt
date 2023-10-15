@@ -2,18 +2,19 @@ package jandre.creditapplicationsystem.entity
 
 import jakarta.persistence.*
 import lombok.AllArgsConstructor
-import lombok.NoArgsConstructor
+import lombok.Data
+import java.math.BigDecimal
 
 @Entity
 @Table(name = "customer")
 @AllArgsConstructor
-@NoArgsConstructor
+@Data
 class Customer(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "ctm_cd_id")
-        val id: Long,
+        var id: Long?,
 
         @Column(name = "ctm_tx_first_name", nullable = false)
         var firstName: String,
@@ -27,10 +28,13 @@ class Customer(
         @Column(name = "ctm_tx_email", nullable = false, unique = true)
         var email: String,
 
+        @Column(name = "ctm_big_income", nullable = false)
+        var income: BigDecimal,
+
         @Column(name = "ctm_tx_password", nullable = false)
         var password: String,
 
-        @ManyToOne
+        @ManyToOne(cascade = [CascadeType.PERSIST])
         @JoinColumn(name = "ctm_fk_address", nullable = false)
         var address: Address = Address(),
 

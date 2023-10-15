@@ -3,6 +3,7 @@ package jandre.creditapplicationsystem.entity
 import jakarta.persistence.*
 import jandre.creditapplicationsystem.enums.Status
 import lombok.AllArgsConstructor
+import lombok.Data
 import lombok.NoArgsConstructor
 import java.math.BigDecimal
 import java.time.LocalDate
@@ -12,6 +13,7 @@ import java.util.*
 @Table(name = "credit")
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 class Credit (
 
         @Id

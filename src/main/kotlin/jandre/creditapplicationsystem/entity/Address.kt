@@ -5,17 +5,19 @@ import jakarta.persistence.Entity
 import jakarta.persistence.Id
 import jakarta.persistence.Table
 import lombok.AllArgsConstructor
+import lombok.Data
 import lombok.NoArgsConstructor
 
 @Entity
 @Table(name = "address")
 @AllArgsConstructor
 @NoArgsConstructor
+@Data
 class Address(
 
         @Id
         @Column(name = "adr_cd_zip_code", columnDefinition = "VARCHAR(8)")
-        val cep: String? = null,
+        var cep: String? = null,
 
         @Column(name = "ctm_tx_address")
         var logradouro: String? = null,

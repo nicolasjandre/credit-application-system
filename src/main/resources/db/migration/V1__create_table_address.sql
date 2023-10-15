@@ -1,5 +1,5 @@
 CREATE TABLE address (
-  adr_cd_zip_code VARCHAR(8) NOT NULL,
+  adr_cd_zip_code VARCHAR(9) NOT NULL,
    ctm_tx_address VARCHAR(255),
    ctm_tx_complement VARCHAR(255),
    ctm_tx_neighborhood VARCHAR(255),
