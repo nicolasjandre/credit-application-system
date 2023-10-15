@@ -19,10 +19,10 @@ class Credit (
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "crd_cd_id")
-        val id: Long,
+        val id: Long?,
 
         @Column(name = "crd_uid_credit_code", nullable = false, unique = true)
-        val creditCode: UUID = UUID.randomUUID(),
+        val creditCode: UUID? = UUID.randomUUID(),
 
         @Column(name = "crd_big_credit_value", nullable = false)
         val creditValue: BigDecimal = BigDecimal.ZERO,
@@ -35,7 +35,7 @@ class Credit (
 
         @Enumerated
         @Column(name = "crd_enm_status", nullable = false)
-        val status: Status = Status.IN_PROGRESS,
+        var status: Status? = Status.IN_PROGRESS,
 
         @ManyToOne
         @JoinColumn(name = "crd_fk_customer", nullable = false)

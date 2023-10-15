@@ -50,7 +50,7 @@ class AddressServiceImpl(
 
     override fun updateById(dto: AddressReqDto, id: String): AddressResDto {
         val existingAddress: Address = checkIfExists(id)
-        val newAddress: Address = AddressMapper.updateExistingAddressUsingReqDto(dto, existingAddress)
+        val newAddress: Address = AddressMapper.patchExistingAddressUsingReqDto(dto, existingAddress)
         return AddressMapper.EntityToResDto(addressRepository.save(newAddress))
     }
 
