@@ -3,6 +3,7 @@ package jandre.creditapplicationsystem.service.impl
 import jandre.creditapplicationsystem.dto.customer.CustomerReqDto
 import jandre.creditapplicationsystem.dto.customer.CustomerResDto
 import jandre.creditapplicationsystem.entity.Address
+import jandre.creditapplicationsystem.entity.Customer
 import jandre.creditapplicationsystem.exception.NotFoundException
 import jandre.creditapplicationsystem.mapper.CustomerMapper
 import jandre.creditapplicationsystem.repository.CustomerRepository
@@ -26,7 +27,7 @@ class CustomerServiceImpl(
     }
 
     override fun findById(id: Long): CustomerResDto {
-        val customer: jandre.creditapplicationsystem.entity.Customer = checkIfExists(id)
+        val customer: Customer = checkIfExists(id)
         return CustomerMapper.EntityToResDto(customer)
     }
 
@@ -41,12 +42,12 @@ class CustomerServiceImpl(
     }
 
     override fun updateById(dto: CustomerReqDto, id: Long): CustomerResDto {
-        val existingCustomer: jandre.creditapplicationsystem.entity.Customer = checkIfExists(id)
-        val updatedCustomer: jandre.creditapplicationsystem.entity.Customer = CustomerMapper.patchExistingCustomerUsingReqDto(dto, existingCustomer)
+        val existingCustomer: Customer = checkIfExists(id)
+        val updatedCustomer: Customer = CustomerMapper.patchExistingCustomerUsingReqDto(dto, existingCustomer)
         return CustomerMapper.EntityToResDto(customerRepository.save(updatedCustomer))
     }
 
-    override fun checkIfExists(id: Long): jandre.creditapplicationsystem.entity.Customer {
+    override fun checkIfExists(id: Long): Customer {
         return customerRepository.findById(id).orElseThrow {
             NotFoundException("Customer with ID=[$id] not found")
         }

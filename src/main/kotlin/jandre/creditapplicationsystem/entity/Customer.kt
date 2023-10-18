@@ -3,18 +3,20 @@ package jandre.creditapplicationsystem.entity
 import jakarta.persistence.*
 import lombok.AllArgsConstructor
 import lombok.Data
+import lombok.NoArgsConstructor
 import java.math.BigDecimal
 
 @Entity
 @Table(name = "customer")
 @AllArgsConstructor
+@NoArgsConstructor
 @Data
 class Customer(
 
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "ctm_cd_id")
-        var id: Long?,
+        var id: Long? = null,
 
         @Column(name = "ctm_tx_first_name", nullable = false)
         var firstName: String,

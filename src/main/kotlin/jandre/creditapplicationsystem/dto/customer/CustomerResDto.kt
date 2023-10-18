@@ -1,8 +1,9 @@
 package jandre.creditapplicationsystem.dto.customer
 
-import jandre.creditapplicationsystem.entity.Address
+import jandre.creditapplicationsystem.dto.address.AddressResDto
 import jandre.creditapplicationsystem.entity.Credit
 import jandre.creditapplicationsystem.entity.Customer
+import jandre.creditapplicationsystem.mapper.AddressMapper
 import lombok.AllArgsConstructor
 import lombok.Data
 import lombok.NoArgsConstructor
@@ -22,12 +23,12 @@ data class CustomerResDto(
 
     var email: String,
 
-    var address: Address,
+    var address: AddressResDto,
 
     var credits: List<Credit>
 
 ) {
     constructor(customer: Customer)
             : this(customer.id!!, customer.firstName, customer.lastName,
-        customer.cpf, customer.email, customer.address, customer.credits)
+        customer.cpf, customer.email, AddressMapper.EntityToResDto(customer.address), customer.credits)
 }

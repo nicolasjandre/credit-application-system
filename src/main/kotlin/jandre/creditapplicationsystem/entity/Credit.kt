@@ -22,7 +22,7 @@ class Credit (
         val id: Long?,
 
         @Column(name = "crd_uid_credit_code", nullable = false, unique = true)
-        val creditCode: UUID? = UUID.randomUUID(),
+        var creditCode: UUID? = UUID.randomUUID(),
 
         @Column(name = "crd_big_credit_value", nullable = false)
         val creditValue: BigDecimal = BigDecimal.ZERO,

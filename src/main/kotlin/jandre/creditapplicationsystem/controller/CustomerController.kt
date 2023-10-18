@@ -3,7 +3,8 @@ package jandre.creditapplicationsystem.controller
 import jandre.creditapplicationsystem.dto.customer.CustomerReqDto
 import jandre.creditapplicationsystem.dto.customer.CustomerResDto
 import jandre.creditapplicationsystem.service.ICustomerService
-import jandre.creditapplicationsystem.validation.CustomerReqDtoSaveValidation
+import jandre.creditapplicationsystem.validation.customer.CustomerReqDtoSaveValidation
+import jandre.creditapplicationsystem.validation.customer.CustomerReqDtoUpdateValidation
 import org.springframework.data.domain.Page
 import org.springframework.data.domain.Sort
 import org.springframework.http.HttpStatus
@@ -37,13 +38,14 @@ class CustomerController(
     }
 
     @PatchMapping("/{id}")
-    fun updateById(@RequestBody dto: CustomerReqDto, @PathVariable id: Long): ResponseEntity<CustomerResDto> {
+    fun updateById(@RequestBody @Validated(CustomerReqDtoUpdateValidation::class) dto: CustomerReqDto,
+                   @PathVariable id: Long): ResponseEntity<CustomerResDto> {
         return ResponseEntity.status(HttpStatus.OK).body(customerService.updateById(dto, id))
     }
 
     @DeleteMapping("/{id}")
     fun deleteById(@PathVariable id: Long): ResponseEntity<CustomerResDto> {
         customerService.deleteById(id)
-        return ResponseEntity.status(HttpStatus.OK).body(null)
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null)
     }
 }

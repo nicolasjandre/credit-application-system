@@ -50,6 +50,6 @@ class AddressController(
     fun deleteById(@PathVariable("cep") @Size(min = 8, max = 8,
         message = "CEP should've 8 characters") cep: String): ResponseEntity<AddressResDto> {
         addressService.deleteById(cep)
-        return ResponseEntity.status(HttpStatus.OK).body(null)
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null)
     }
 }

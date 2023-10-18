@@ -14,23 +14,23 @@ data class AddressReqDto(
 
     @field:NotBlank(groups = [AddressReqDtoSaveValidation::class], message = "Field [cep] can not be blank or null")
     @field:Size(groups = [AddressReqDtoSaveValidation::class], message = "Field [cep] should contain 8 characters", min = 8, max = 8)
-    val cep: String?,
+    var cep: String? = null,
 
-    var logradouro: String?,
+    var logradouro: String? = null,
 
-    var complemento: String?,
+    var complemento: String? = null,
 
-    var bairro: String?,
+    var bairro: String? = null,
 
-    var localidade: String?,
+    var localidade: String? = null,
 
-    var uf: String?,
+    var uf: String? = null,
 
-    var ibge: String?,
+    var ibge: String? = null,
 
-    var gia: String?,
+    var gia: String? = null,
 
-    var ddd: String?,
+    var ddd: String? = null,
 
-    var siafi: String?
+    var siafi: String? = null
 )

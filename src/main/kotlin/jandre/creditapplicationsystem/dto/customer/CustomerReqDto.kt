@@ -4,10 +4,12 @@ import jakarta.validation.ConstraintViolationException
 import jakarta.validation.Validation
 import jakarta.validation.constraints.NotBlank
 import jakarta.validation.constraints.NotNull
+import jakarta.validation.constraints.Null
 import jakarta.validation.constraints.Size
 import jandre.creditapplicationsystem.dto.address.AddressReqDto
 import jandre.creditapplicationsystem.validation.AddressReqDtoSaveValidation
-import jandre.creditapplicationsystem.validation.CustomerReqDtoSaveValidation
+import jandre.creditapplicationsystem.validation.customer.CustomerReqDtoSaveValidation
+import jandre.creditapplicationsystem.validation.customer.CustomerReqDtoUpdateValidation
 import lombok.AllArgsConstructor
 import lombok.Data
 import lombok.NoArgsConstructor
@@ -27,6 +29,7 @@ data class CustomerReqDto(
 
     @field:NotBlank(groups = [CustomerReqDtoSaveValidation::class], message = "Field [cpf] should not be null or empty")
     @field:Size(groups = [CustomerReqDtoSaveValidation::class], message = "Field [cpf] should've 11 characters", min = 11, max = 11)
+    @field:Null(groups = [CustomerReqDtoUpdateValidation::class], message = "Field [cpf] can not be updated")
     val cpf: String?,
 
     @field:NotBlank(groups = [CustomerReqDtoSaveValidation::class], message = "Field [email] should not be null or empty")

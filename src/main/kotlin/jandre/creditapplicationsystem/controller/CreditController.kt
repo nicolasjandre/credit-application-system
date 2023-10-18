@@ -66,6 +66,6 @@ class CreditController(
     @DeleteMapping("/{id}")
     fun deleteById(@PathVariable("id")  id: Long): ResponseEntity<CreditResDto> {
         creditService.deleteById(id)
-        return ResponseEntity.status(HttpStatus.OK).body(null)
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).body(null)
     }
 }

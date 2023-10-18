@@ -49,8 +49,8 @@ class ExceptionHandler {
             else -> ex.message ?: "Erro de integridade de dados"
         }
 
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-            .body(ErrorResponseDto(errorMessage, HttpStatus.BAD_REQUEST, HttpStatus.BAD_REQUEST.value()))
+        return ResponseEntity.status(HttpStatus.CONFLICT)
+            .body(ErrorResponseDto(errorMessage, HttpStatus.CONFLICT, HttpStatus.CONFLICT.value()))
     }
 
     @ExceptionHandler(ConstraintViolationException::class)
